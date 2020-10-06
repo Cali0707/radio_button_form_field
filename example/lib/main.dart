@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:radio_button_form_field/radio_button_form_field.dart';
 
-//TODO: finish this
+
 void main() {
   runApp(MyApp());
 }
-
-enum SingingCharacter { lafayette, jefferson }
 
 class MyApp extends StatelessWidget {
   @override
