@@ -25,6 +25,7 @@ class ExampleForm extends StatefulWidget {
 GlobalKey myFormKey = new GlobalKey();
 
 class _ExampleFormState extends State<ExampleForm> {
+  int myNumber;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +36,47 @@ class _ExampleFormState extends State<ExampleForm> {
         child: Form(
           key: myFormKey,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-
+              Expanded(
+                child: RadioButtonFormField(
+                  context: context,
+                  value: 'value',
+                  display: 'display',
+                  data: data,
+                  onSaved: (value) {
+                    setState(() {
+                      myNumber = value;
+                    });
+                  },
+                ),
+              ),
+              FlatButton(
+                  onPressed: () {
+                    _submitForm();
+                  },
+                  child: Text(
+                    'Submit'
+                  ),
+              ),
             ],
           ),
+          ),
         ),
-      ),
     );
   }
+  void _submitForm() {
+    final FormState formState = myFormKey.currentState;
+    formState.save();
+    print(myNumber);
+  }
 }
+
+final List<Map> data = [
+  {'value': 1,
+  'display': 'One'},
+  {'value': 2,
+  'display': 'Two'},
+  {'value': 3,
+  'display': 'Three'}
+];

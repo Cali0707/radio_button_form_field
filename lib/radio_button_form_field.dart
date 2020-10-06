@@ -9,8 +9,9 @@ class RadioButtonFormField extends FormField {
   /// When using without a Form ancestor, a [GlobalKey] is required.
   RadioButtonFormField({
     Key key,
-    @required this.value,
     @required this.data,
+    @required this.value,
+    @required this.display,
     @required BuildContext context,
     this.mouseCursor,
     this.toggleable = false,
@@ -38,7 +39,7 @@ class RadioButtonFormField extends FormField {
                 itemBuilder: (context, index) {
                   return new ListTile(
                     leading: Radio(
-                      value: data[index]['value'],
+                      value: data[index][value],
                       groupValue: state.value,
                       activeColor: activeColor,
                       autofocus: autoFocus,
@@ -54,14 +55,15 @@ class RadioButtonFormField extends FormField {
                       visualDensity: visualDensity,
                     ),
                     title: Text(
-                      data[index]['title'],
+                      data[index][display],
                       style: titleStyle ?? TextStyle(color: Colors.black),
                     ),
                   );
                 },
               );
             });
-  final value;
+  final String value;
+  final String display;
   final MouseCursor mouseCursor;
   final bool toggleable;
   final Color activeColor;
