@@ -1,4 +1,5 @@
 library radio_button_form_field;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -9,7 +10,8 @@ class RadioButtonFormField extends FormField {
   RadioButtonFormField({
     Key key,
     @required this.value,
-    @required this.title,
+    @required this.data,
+    @required BuildContext context,
     this.mouseCursor,
     this.toggleable = false,
     this.activeColor,
@@ -25,32 +27,40 @@ class RadioButtonFormField extends FormField {
     FormFieldValidator validator,
     this.inputDecoration = const InputDecoration(),
     bool autoValidate = false,
-  }) : assert(autoValidate != null),
-  super(
-        validator: validator,
-        onSaved: onSaved,
-        builder: (FormFieldState state) {
-          return InputDecorator(
-            decoration: inputDecoration,
-            child: ListTile(
-              title: title,
-              leading: Radio(
-                value: value,
-                groupValue: state.value,
-                onChanged: (value) {
-                  state.didChange(value);
+    this.titleStyle
+  })  : assert(autoValidate != null),
+        super(
+            validator: validator,
+            onSaved: onSaved,
+            builder: (FormFieldState state) {
+              return ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return new ListTile(
+                    leading: Radio(
+                      value: data[index]['value'],
+                      groupValue: state.value,
+                      activeColor: activeColor,
+                      autofocus: autoFocus,
+                      focusColor: focusColor,
+                      focusNode: focusNode,
+                      hoverColor: hoverColor,
+                      materialTapTargetSize: materialTapTargetSize,
+                      mouseCursor: mouseCursor,
+                      onChanged: (value) {
+                        state.didChange(value);
+                      },
+                      toggleable: toggleable,
+                      visualDensity: visualDensity,
+                    ),
+                    title: Text(
+                      data[index]['title'],
+                      style: titleStyle ?? TextStyle(color: Colors.black),
+                    ),
+                  );
                 },
-                mouseCursor: mouseCursor,
-                toggleable: toggleable,
-                activeColor: activeColor,
-                focusColor: focusColor,
-                hoverColor: hoverColor,
-                materialTapTargetSize: materialTapTargetSize,
-              ),
-            ),
-          );
-        }
-      );
+              );
+            });
   final value;
   final MouseCursor mouseCursor;
   final bool toggleable;
@@ -63,6 +73,7 @@ class RadioButtonFormField extends FormField {
   final VisualDensity visualDensity;
   final FocusNode focusNode;
   final bool autoFocus;
-  final Text title;
   final InputDecoration inputDecoration;
+  final List<Map> data;
+  final TextStyle titleStyle;
 }

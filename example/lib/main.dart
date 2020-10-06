@@ -36,9 +36,7 @@ class _ExampleFormState extends State<ExampleForm> {
           key: myFormKey,
           child: Column(
             children: [
-              RadioButtonFormField(
-                  value: SingingCharacter.jefferson,
-                  title: Text('Jefferson'))
+
             ],
           ),
         ),
