@@ -35,7 +35,7 @@ class RadioButtonFormField extends FormField {
       this.visualDensity,
       this.focusNode,
       this.autoFocus = false,
-        this.shape,
+      this.shape,
       FormFieldSetter onSaved,
       FormFieldValidator validator,
       bool autoValidate = false,
@@ -77,6 +77,7 @@ class RadioButtonFormField extends FormField {
                 },
               );
             });
+
   /// This is the data used to construct the [RadioButtonFormField].
   ///
   /// Each [Map] in the [List] must contain a value and for the [Radio] and a display for the title of the [ListTile].

@@ -2,4 +2,8 @@
 
 * Initial release, includes functionality to add a RadioButtonFormField into a Form.
 
+## [0.0.2] October 6, 2020
+
+* Ran dartfmt
+
 

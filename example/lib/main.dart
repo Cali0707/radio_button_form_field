@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radio_button_form_field/radio_button_form_field.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -56,9 +55,7 @@ class _ExampleFormState extends State<ExampleForm> {
                 },
                 child: Text('Submit'),
               ),
-              Text(
-                myValue
-              )
+              Text(myValue)
             ],
           ),
         ),
