@@ -1,6 +1,7 @@
 ## radio_button_form_field
 
-A Flutter Package to create radio buttons as FormFields, with InputDecoration and validation.
+ A Flutter Package to create radio buttons as FormFields, each contained in a ListTile with the button as the Leading Widget.
+
 
 ## Usage
 
