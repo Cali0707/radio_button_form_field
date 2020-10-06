@@ -1,3 +1,5 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] October 6, 2020
 
-* TODO: Describe initial release.
+* Initial release, includes functionality to add a RadioButtonFormField into a Form.
+
+
