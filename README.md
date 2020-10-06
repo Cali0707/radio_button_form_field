@@ -44,9 +44,9 @@ GlobalKey myFormKey = new GlobalKey();
 
 class _ExampleFormState extends State<ExampleForm> {
   int myNumber;
+  String myValue = 'No value saved yet.';
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text('Radio Button Form Field Example'),
@@ -65,6 +65,7 @@ class _ExampleFormState extends State<ExampleForm> {
                 onSaved: (value) {
                   setState(() {
                     myNumber = value;
+                    myValue = value.toString();
                   });
                 },
               ),
@@ -74,6 +75,9 @@ class _ExampleFormState extends State<ExampleForm> {
                 },
                 child: Text('Submit'),
               ),
+              Text(
+                myValue
+              )
             ],
           ),
         ),
