@@ -21,7 +21,6 @@ The widget will return a ListView containing an equal number of items as the Lis
 import 'package:flutter/material.dart';
 import 'package:radio_button_form_field/radio_button_form_field.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -55,10 +54,11 @@ class _ExampleFormState extends State<ExampleForm> {
       body: SafeArea(
         child: Form(
           key: myFormKey,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: ExpansionTile(
             children: [
               RadioButtonFormField(
+                toggleable: true,
+                padding: EdgeInsets.all(8),
                 context: context,
                 value: 'value',
                 display: 'display',
@@ -76,9 +76,7 @@ class _ExampleFormState extends State<ExampleForm> {
                 },
                 child: Text('Submit'),
               ),
-              Text(
-                myValue
-              )
+              Text(myValue)
             ],
           ),
         ),
@@ -88,8 +86,10 @@ class _ExampleFormState extends State<ExampleForm> {
 
   void _submitForm() {
     final FormState formState = myFormKey.currentState;
-    formState.save();
-    print(myNumber);
+    if (formState.validate()) {
+      formState.save();
+      print(myNumber);
+    }
   }
 }
 

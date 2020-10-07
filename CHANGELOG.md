@@ -6,6 +6,6 @@
 
 * Ran dartfmt
 
-## [0.0.3] October 6, 2020
+## [0.0.3] October 7, 2020
 
-* 
+* Fixed toggleable property for ListTile onTap

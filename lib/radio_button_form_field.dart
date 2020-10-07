@@ -46,7 +46,6 @@ class RadioButtonFormField extends FormField {
             validator: validator,
             onSaved: onSaved,
             builder: (FormFieldState state) {
-              bool isFirstPress = true;
               return ListView.builder(
                 padding: padding,
                 shrinkWrap: true,
@@ -65,7 +64,6 @@ class RadioButtonFormField extends FormField {
                       mouseCursor: mouseCursor,
                       onChanged: (value) {
                         state.didChange(value);
-                        isFirstPress = false;
                       },
                       toggleable: toggleable,
                       visualDensity: visualDensity,
@@ -76,7 +74,6 @@ class RadioButtonFormField extends FormField {
                     ),
                     onTap: () {
                       if (toggleable == true) {
-                        print('elif');
                         if (state.value != data[index][value]) {
                           state.didChange(data[index][value]);
                         } else {

@@ -39,7 +39,7 @@ class _ExampleFormState extends State<ExampleForm> {
             children: [
               RadioButtonFormField(
                 toggleable: true,
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(8),
                 context: context,
                 value: 'value',
                 display: 'display',
