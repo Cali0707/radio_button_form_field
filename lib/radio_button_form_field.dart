@@ -36,6 +36,7 @@ class RadioButtonFormField extends FormField {
       this.focusNode,
       this.autoFocus = false,
       this.shape,
+      this.padding,
       FormFieldSetter onSaved,
       FormFieldValidator validator,
       bool autoValidate = false,
@@ -45,7 +46,9 @@ class RadioButtonFormField extends FormField {
             validator: validator,
             onSaved: onSaved,
             builder: (FormFieldState state) {
+              bool isFirstPress = true;
               return ListView.builder(
+                padding: padding,
                 shrinkWrap: true,
                 itemCount: data.length,
                 itemBuilder: (context, index) {
@@ -62,6 +65,7 @@ class RadioButtonFormField extends FormField {
                       mouseCursor: mouseCursor,
                       onChanged: (value) {
                         state.didChange(value);
+                        isFirstPress = false;
                       },
                       toggleable: toggleable,
                       visualDensity: visualDensity,
@@ -71,7 +75,16 @@ class RadioButtonFormField extends FormField {
                       style: titleStyle ?? TextStyle(color: Colors.black),
                     ),
                     onTap: () {
-                      state.didChange(data[index][value]);
+                      if (toggleable == true) {
+                        print('elif');
+                        if (state.value != data[index][value]) {
+                          state.didChange(data[index][value]);
+                        } else {
+                          state.didChange(null);
+                        }
+                      } else {
+                        state.didChange(data[index][value]);
+                      }
                     },
                   );
                 },
@@ -129,6 +142,9 @@ class RadioButtonFormField extends FormField {
   /// The [TextStyle] of the title of each [ListTile].
   final TextStyle titleStyle;
 
-  /// The shape of the tile's [InkWell]
+  /// The shape of the tile's [InkWell].
   final ShapeBorder shape;
+
+  /// The padding of the widgets.
+  final EdgeInsetsGeometry padding;
 }

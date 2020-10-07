@@ -38,6 +38,8 @@ class _ExampleFormState extends State<ExampleForm> {
             mainAxisSize: MainAxisSize.min,
             children: [
               RadioButtonFormField(
+                toggleable: true,
+                padding: EdgeInsets.all(10.0),
                 context: context,
                 value: 'value',
                 display: 'display',
@@ -65,8 +67,10 @@ class _ExampleFormState extends State<ExampleForm> {
 
   void _submitForm() {
     final FormState formState = myFormKey.currentState;
-    formState.save();
-    print(myNumber);
+    if (formState.validate()) {
+      formState.save();
+      print(myNumber);
+    }
   }
 }
 
