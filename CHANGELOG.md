@@ -9,3 +9,7 @@
 ## [0.0.3] October 7, 2020
 
 * Fixed toggleable property for ListTile onTap
+
+## [0.0.4] October 7, 2020
+
+* Small cleanup of code
