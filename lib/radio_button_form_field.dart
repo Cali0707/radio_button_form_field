@@ -24,6 +24,7 @@ class RadioButtonFormField extends FormField {
       required this.value,
       required this.display,
       required BuildContext context,
+      this.initialValue,
       this.mouseCursor,
       this.toggleable = false,
       this.activeColor,
@@ -102,6 +103,9 @@ class RadioButtonFormField extends FormField {
   ///
   /// For example, if the Map contains "display": "One", then this would be "display"
   final String display;
+
+  /// Set an initial value for the [FormField]
+  final dynamic? initialValue;
 
   /// The cursor for a mouse pointer when it enters or is hovering over a [Radio] widget.
   final MouseCursor? mouseCursor;
