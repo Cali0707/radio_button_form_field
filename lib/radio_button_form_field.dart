@@ -19,11 +19,12 @@ class RadioButtonFormField extends FormField {
   ///
   /// When using without a Form ancestor, a [GlobalKey] is required.
   RadioButtonFormField(
-      {Key key,
-      @required this.data,
-      @required this.value,
-      @required this.display,
-      @required BuildContext context,
+      {Key? key,
+      required this.data,
+      required this.value,
+      required this.display,
+      required BuildContext context,
+      this.initialValue,
       this.mouseCursor,
       this.toggleable = false,
       this.activeColor,
@@ -37,8 +38,8 @@ class RadioButtonFormField extends FormField {
       this.autoFocus = false,
       this.shape,
       this.padding,
-      FormFieldSetter onSaved,
-      FormFieldValidator validator,
+      FormFieldSetter? onSaved,
+      FormFieldValidator? validator,
       bool autoValidate = false,
       this.titleStyle})
       : assert(autoValidate != null),
@@ -62,7 +63,7 @@ class RadioButtonFormField extends FormField {
                       hoverColor: hoverColor,
                       materialTapTargetSize: materialTapTargetSize,
                       mouseCursor: mouseCursor,
-                      onChanged: (value) {
+                      onChanged: (dynamic value) {
                         state.didChange(value);
                       },
                       toggleable: toggleable,
@@ -103,45 +104,48 @@ class RadioButtonFormField extends FormField {
   /// For example, if the Map contains "display": "One", then this would be "display"
   final String display;
 
+  /// Set an initial value for the [FormField]
+  final dynamic? initialValue;
+
   /// The cursor for a mouse pointer when it enters or is hovering over a [Radio] widget.
-  final MouseCursor mouseCursor;
+  final MouseCursor? mouseCursor;
 
   /// Set to true if the radio buttons are allowed to be returned to an indeterminate state by selecting it again when selected.
   final bool toggleable;
 
   /// The color to use when a radio button is selected.
-  final Color activeColor;
+  final Color? activeColor;
 
   /// The color for the radio's [Material] when it has the input focus.
-  final Color focusColor;
+  final Color? focusColor;
 
   /// The color for the radio's [Material] when a pointer is hovering over it.
-  final Color hoverColor;
+  final Color? hoverColor;
 
   /// Defines the background color of the [ListTile]s when selected is false.
-  final Color tileColor;
+  final Color? tileColor;
 
   /// Defines the background color of the [ListTile]s when selected is true.
-  final Color selectedTileColor;
+  final Color? selectedTileColor;
 
   /// Configures the minimum size of the tap target.
-  final MaterialTapTargetSize materialTapTargetSize;
+  final MaterialTapTargetSize? materialTapTargetSize;
 
   /// Defines how compact the radio's layout will be.
-  final VisualDensity visualDensity;
+  final VisualDensity? visualDensity;
 
   /// An optional focus node to use as the focus node for this widget.
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   /// True if this widget will be selected as the initial focus when no other node in its scope is currently focused.
   final bool autoFocus;
 
   /// The [TextStyle] of the title of each [ListTile].
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
 
   /// The shape of the tile's [InkWell].
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   /// The padding of the widgets.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 }

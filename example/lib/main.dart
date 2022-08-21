@@ -20,11 +20,12 @@ class ExampleForm extends StatefulWidget {
   _ExampleFormState createState() => _ExampleFormState();
 }
 
-GlobalKey myFormKey = new GlobalKey();
+GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
 
 class _ExampleFormState extends State<ExampleForm> {
-  int myNumber;
+  int myNumber = 0;
   String myValue = 'No value saved yet.';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,7 @@ class _ExampleFormState extends State<ExampleForm> {
                   });
                 },
               ),
-              FlatButton(
+              ElevatedButton(
                 onPressed: () {
                   _submitForm();
                 },
@@ -66,7 +67,7 @@ class _ExampleFormState extends State<ExampleForm> {
   }
 
   void _submitForm() {
-    final FormState formState = myFormKey.currentState;
+    var formState = myFormKey.currentState!;
     if (formState.validate()) {
       formState.save();
       print(myNumber);
